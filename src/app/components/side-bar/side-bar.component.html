@@ -1,0 +1,118 @@
+<!-- HEADER MOBILE-->
+<header class="header-mobile d-block d-lg-none">
+    <div class="header-mobile__bar">
+        <div class="container-fluid">
+            <div class="header-mobile-inner">
+                <!--<a class="logo" href="index.html">-->
+                <!--<img src="assets/images/icon/logo.png" alt="CoolAdmin" />-->
+                <!--</a>-->
+                <button class="hamburger hamburger--slider" type="button">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar-mobile">
+        <div class="container-fluid">
+            <ul class="navbar-mobile__list list-unstyled">
+                <li class="has-sub" (click)="goToDash()">
+                    <a class="js-arrow">
+                        <i class="fas fa-balance-scale"></i>Balance</a>
+
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-align-left"></i>Payments</a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-arrow-up"></i>Send</a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-arrow-down"></i>Receive</a>
+                </li>
+                <li>
+                    <a>
+                        <i class="fa fa-globe"></i>Account</a>
+                </li>
+                <li class="has-sub" (click)="goToManageOffers()">
+                    <a class="js-arrow">
+                        <i class="fas fa-balance-scale"></i>SDEx Offers</a>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<!-- END HEADER MOBILE-->
+
+
+<!-- MENU SIDEBAR-->
+<aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+        <a target="_blanck" href="https://www.unsinkable.io/hodl-wallet">
+            <img style="max-width: 68%;;" src="../../../assets/images/logos/walled_logo.png" alt="CoolAdmin">
+            <img style="max-width: 32%;" src="../../../assets/images/logos/alpha_logo.png" alt="CoolAdmin">
+        </a>
+    </div>
+
+    <div class="menu-sidebar__content">
+        <nav class="navbar-sidebar">
+            <ul class="list-unstyled navbar__list">
+                <li class="has-sub" routerLink="/dashboard" routerLinkActive="active">
+                    <a class="js-arrow">
+                        <i class="fas fa-balance-scale"></i>Balance</a>
+
+                </li>
+                <li routerLink="/hodl">
+                    <a>
+                        <i class="fa fa-lock"></i>HODL</a>
+                </li>
+                <li>
+                    <a routerLink="/history" routerLinkActive="active">
+                        <i class="fa fa-align-left"></i>History</a>
+                </li>
+                <li>
+                    <a routerLink="/deposit" routerLinkActive="active">
+                        <i class="fa fa-arrow-down"></i>Deposit</a>
+                </li>
+                <li>
+                    <a routerLink="/withdraw" routerLinkActive="active">
+                        <i class="fa fa-arrow-up"></i>Withdraw</a>
+                </li>
+
+                <li>
+                    <a routerLink="/manage-offers" routerLinkActive="active">
+                        <i class="fas fa-cogs"></i>SDEx Offers</a>
+
+                </li>
+
+                <li>
+                    <a>
+                        <img style="margin-left: -6px;margin-right: 10px;" src="../../../assets/images/icon/wallet-logo.png" alt="">UNSK
+                        ICO
+                    </a>
+                </li>
+               
+                <li>
+                    <a routerLink="/keypair" routerLinkActive="active"><i class="fa fa-plus"></i>Add Keypair</a>
+                </li>
+                <li>
+                    <a routerLink="/account"><i class="fa fa-globe"></i>Account</a>
+                </li>
+                <li>
+                    <a target="_blanck" href="https://www.unsinkable.io/faq">
+                        <i class="fa fa-question"></i>FAQ</a>
+                </li>
+                <li>
+                    <a target="_blanck" href="https://www.unsinkable.io/help">
+                        <i class="fa fa-paper-plane"></i>Help</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
+<!-- END MENU SIDEBAR-->

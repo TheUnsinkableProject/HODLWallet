@@ -1,0 +1,56 @@
+<div>
+  <div class="page-wrapper">
+    <app-side-bar></app-side-bar>
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+      <app-content-header></app-content-header>
+      <!-- MAIN CONTENT-->
+      <div class="main-content">
+
+        <div class="section__content section__content--p30">
+          <div class="container-fluid">
+            <div class="row">
+
+              <div class="col-lg-12">
+                <div class="alert-danger custom-alert" *ngIf="user.refund_xlm">
+                  If requested, your secret key will be available after you return the 2 XLM credit provided by The Unsinkable Project to setup your account
+                </div>
+                <div class="au-card recent-report">
+
+                  <div class="au-card-inner">
+
+                    <div class="m-b-5">Your Balance : <span class="text-primary">{{balance?.XLM}} XLM</span></div>
+                    <div class="m-b-5">Credit Balance : <span class="text-primary">2 XLM</span></div>
+					<br>
+                    <div class="m-b-5">
+                      <label for="pass">Password :</label>
+                      <input [(ngModel)]="password" class="col-lg-6 m-l-5 au-input--style2 password-input" placeholder="Please enter your password" type="password"
+                        name="password" id="">
+                    </div><br>
+                    <div class="col-lg-2 ">
+                      <button [class.disabled-btn]="password == null || password == ''" [disabled]="password == null || password == ''" (click)="pay()"
+                        class="au-btn au-btn--block au-btn--green m-b-20" type="submit">Pay</button>
+                    </div>
+                    <p>Stellar requires a minimum XLM balance for accounts. Please return the 2 XLM loaned to you for initial account setup ASAP.</p>
+                    <div *ngIf="status" style="text-align: center; padding-top: 20px;">
+                      <div class="m-b-5" style="color: red">
+                        Please Store your Private Key Somewhere safe!!
+                      </div>
+                      <div class="m-b-5 text-primary">
+                        {{key}}
+                      </div>
+					  <p style="color: red">DO NOT LEAVE THIS PAGE UNTIL THESE NUMBERS ARE SAVED!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END MAIN CONTENT-->
+      <!-- END PAGE CONTAINER-->
+    </div>
+  </div>
+</div>
+<block-ui></block-ui>

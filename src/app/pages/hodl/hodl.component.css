@@ -1,0 +1,24 @@
+.no-radius-top {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.custom-alert {
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+control-messages {
+    color: #ff2e44;
+}
+
+
+#tx{
+    margin-right: 50px;
+    margin-top: 50px;
+}

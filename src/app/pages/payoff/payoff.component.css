@@ -1,0 +1,21 @@
+.no-radius-top{
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.custom-alert{
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.password-input{
+    border: 1px solid ;
+    margin-left: 4px
+}
+
+.disabled-btn{
+    color: graytext !important;   
+    background: lightgray;
+    cursor: not-allowed;
+}

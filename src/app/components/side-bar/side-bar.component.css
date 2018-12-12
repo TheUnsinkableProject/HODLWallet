@@ -1,0 +1,7 @@
+.menu-sidebar{
+	overflow: hidden;
+}
+
+.menu-sidebar__content{
+	overflow: auto;
+}

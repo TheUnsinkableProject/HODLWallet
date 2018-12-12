@@ -1,0 +1,13 @@
+*:not(button, a){
+    color:#666;
+}
+
+control-messages{
+    color: #ff2e44;
+}
+
+.custom-alert{
+    padding: 10px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}

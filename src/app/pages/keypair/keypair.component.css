@@ -1,0 +1,7 @@
+*:not(a, button) {
+    color: #666;
+}
+
+control-messages {
+    color: #ff2e44;
+}

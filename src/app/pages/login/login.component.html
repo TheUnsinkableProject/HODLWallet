@@ -1,0 +1,65 @@
+<div>
+    <div class="page-wrapper">
+        <div class="page-content--bge5">
+            <div class="container">
+                <div class="login-wrap">
+                    <div class="login-content">
+                        <div class="login-logo" style="margin-left: 30px;">
+                            <a>
+                                <img style="max-width: 67%;margin-left: 43px;" src="assets/images/logos/walled_logo.png" alt="CoolAdmin">
+                                <img style="max-width: 23%;" src="assets/images/logos/alpha_logo.png" alt="CoolAdmin">
+                            </a>
+                        </div>
+                        <div class="login-form">
+                            <form novalidate (ngSubmit)="f.form.valid && login()" #f="ngForm">
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !email.valid }">
+                                    <label>Email</label>
+                                    <input class="au-input au-input--full" type="text" name="email" id="email"
+                                           placeholder="Email" [(ngModel)]="model.email" #email="ngModel" email
+                                           required>
+                                    <div *ngIf="f.submitted && !email.valid" class="help-block">
+                                        <div *ngIf="email.errors.required">
+                                            Email is required.
+                                        </div>
+                                        <div *ngIf="email.errors.email">
+                                            Please enter valid Email.
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+                                    <label>Password</label>
+                                    <input class="au-input au-input--full" type="password" name="password" id="password"
+                                           placeholder="Password" [(ngModel)]="model.password" #password="ngModel"
+                                           required>
+                                    <div *ngIf="f.submitted && !password.valid" class="help-block">
+                                        <div *ngIf="password.errors.required">
+                                            Password is required.
+                                        </div>
+                                        <div *ngIf="password.errors.minlength">
+                                            Password must be at least 8 characters long.
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <button [disabled]="loading" class="au-btn au-btn--block au-btn--green m-b-20"
+                                        type="submit">login
+                                </button>
+                            </form>
+                            <div class="register-link">
+                                <p>
+                                    New account?
+                                    <a [routerLink]="['/register']">Register</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<block-ui></block-ui>

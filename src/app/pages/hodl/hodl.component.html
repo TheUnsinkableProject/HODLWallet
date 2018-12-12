@@ -1,0 +1,226 @@
+<div>
+    <div class="page-wrapper">
+        <app-side-bar></app-side-bar>
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <app-content-header></app-content-header>
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="au-card recent-report">
+                 <h4 class="title">HODL</h4>
+                            <ngx-tabset #tabset (onSelect)="refresh($event)">
+                                <ngx-tab #buyunsk title="Buy UNSK">
+                                    <div [formGroup]="buyForm" class="col-lg-12 mt-5">
+                                        <h4 class="title">Buy UNSK</h4><br>
+                                        <div class="form-group">
+                                            <div class="input-icon right">
+                                                <div class="row">
+                                                    <label for="buyPrice"
+                                                           class="col-sm-2 col-form-label">Price</label>
+                                                    <div class="col-sm-8">
+                                                        <input id="buyPrice" formControlName="buyPrice" type="text"
+                                                               placeholder="Price"
+                                                               class="form-control"
+                                                               name="buyPrice">
+                                                        <control-messages [errorApi]="errorMsgs"
+                                                                          controlTxt="Price"
+                                                                          controlName="buyPrice"
+                                                                          [control]="buyForm.controls.buyPrice"></control-messages>
+                                                    </div>
+                                                    <span class="col-sm-2 col-form-label">XLM</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label for="buyAmount"
+                                                       class="col-sm-2 col-form-label">Amount</label>
+                                                <div class="col-sm-8">
+                                                    <input id="buyAmount" formControlName="buyAmount" type="text"
+                                                           placeholder="Amount"
+                                                           class="form-control"
+                                                           name="buyAmount">
+                                                    <control-messages [errorApi]="errorMsgs"
+                                                                      controlTxt="Amount"
+                                                                      controlName="buyAmount"
+                                                                      [control]="buyForm.controls.buyAmount"></control-messages>
+                                                </div>
+                                                <span class="col-sm-2 col-form-label">UNSK</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label for="buyTotal"
+                                                       class="col-sm-2 col-form-label">Total</label>
+                                                <div class="col-sm-8">
+                                                    <input id="buyTotal"
+                                                           value="{{buyPrice.value * buyAmount.value}}"
+                                                           class="form-control"
+                                                           disabled>
+                                                </div>
+                                                <span class="col-sm-2 col-form-label">XLM</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-actions mx-auto">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <button (click)="sendOffer('buy')" type="submit"
+                                                            class="btn btn-success">
+                                                        Send
+                                                    </button>
+                                                </div>
+
+                                                <div *ngIf="tx!=null" id="tx">
+                                                    <p>Signed transaction</p>
+                                                    <textarea  rows="6" cols="100">
+                                                        {{tx}}
+                                                    </textarea>
+                                                </div>
+                                              
+                                                    
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ngx-tab>
+                                <ngx-tab #unsk title="Sell UNSK">
+                                    <div [formGroup]="sellForm" class="col-lg-12 mt-5">
+                                        <h4 class="title">Sell UNSK</h4><br>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label for="sellPrice"
+                                                       class="col-sm-2 col-form-label">Price</label>
+                                                <div class="col-sm-8">
+                                                    <input id="sellPrice" formControlName="sellPrice" type="text"
+                                                           placeholder="Price"
+                                                           class="form-control"
+                                                           name="sellPrice">
+                                                    <control-messages [errorApi]="errorMsgs"
+                                                                      controlTxt="Price"
+                                                                      controlName="sellPrice"
+                                                                      [control]="sellForm.controls.sellPrice"></control-messages>
+                                                </div>
+                                                <span class="col-sm-2 col-form-label">XLM</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label for="sellAmount"
+                                                       class="col-sm-2 col-form-label">Amount</label>
+                                                <div class="col-sm-8">
+                                                    <input id="sellAmount" formControlName="sellAmount"
+                                                           type="text"
+                                                           placeholder="Amount"
+                                                           class="form-control"
+                                                           name="sellAmount">
+                                                    <control-messages [errorApi]="errorMsgs" controlTxt="Amount"
+                                                                      controlName="sellAmount"
+                                                                      [control]="sellForm.controls.sellAmount"></control-messages>
+                                                </div>
+                                                <span class="col-sm-2 col-form-label">UNSK</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label for="sellAmount"
+                                                       class="col-sm-2 col-form-label">Total</label>
+                                                <div class="col-sm-8">
+                                                    <input value="{{sellPrice.value * sellAmount.value}}"
+                                                           class="form-control"
+                                                           disabled>
+                                                </div>
+                                                <span class="col-sm-2 col-form-label">XLM</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-actions mx-auto">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <button (click)="sendOffer2('sell')" type="submit"
+                                                            class="btn btn-success">
+                                                        Send
+                                                    </button>
+                                                </div>
+                                                
+                                                <div *ngIf="tx2!=null"  id="tx">
+                                                    <p>Signed transaction</p>
+                                                    <textarea  rows="6" cols="100">
+                                                        {{tx2}}
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ngx-tab>
+                                <!--
+                                <ngx-tab title="My Orders">
+                                    <div class="row mt-5">
+                                        <div class="col-sm-6">
+                                            <div class="page-header" style="overflow-x:auto;">
+                                                <h4 class="title text-center">Buy Offers</h4><br>
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Cancel</th>
+                                                        <th>XLM</th>
+                                                        <th>UNSK</th>
+                                                        <th>Price(XLM)</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr *ngFor="let item of buys">
+                                                        <td>
+                                                            <button (click)="cancelOffer(item.offerID, index, 'buy')"
+                                                                    class="btn btn-danger">
+                                                                Cancel
+                                                            </button>
+                                                        </td>
+                                                        <td>{{item.xlm_amount}}</td>
+                                                        <td>{{item.unsk_amount}}</td>
+                                                        <td>{{item.price}}</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="page-header" style="overflow-x:auto;">
+                                                <h4 class="title text-center">Sell Offers</h4><br>
+                                                <table class="table">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Price(XLM)</th>
+                                                        <th>UNSK</th>
+                                                        <th>XLM</th>
+                                                        <th>Cancel</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr *ngFor="let item of sells">
+                                                        <td>{{item.price}}</td>
+                                                        <td>{{item.unsk_amount}}</td>
+                                                        <td>{{item.xlm_amount}}</td>
+                                                        <td>
+                                                            <button (click)="cancelOffer(item.offerID, index, 'sell')"
+                                                                    class="btn btn-danger">
+                                                                Cancel
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ngx-tab>
+                            -->
+                            </ngx-tabset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<block-ui></block-ui>

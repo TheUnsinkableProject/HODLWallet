@@ -1,0 +1,41 @@
+<div>
+    <div class="page-wrapper">
+        <app-side-bar></app-side-bar>
+        <!-- PAGE CONTAINER-->
+
+        <div class="page-container">
+            <app-content-header></app-content-header>
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="au-card recent-report">
+                        <div class="page-header" style="overflow-x:auto;">
+
+                            <h4 class="title text-center">History</h4><br>
+
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Action</th>
+                                    <th>Address</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Transaction</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr *ngFor="let item of transactions">
+                                    <td>{{item.action}}</td>
+                                    <td><a target="_blank" href="http://testnet.stellarchain.io/address/{{item.account}}">{{item.account | slice:0:21}}...</a></td>
+                                    <td>{{item.amount}} {{item.asset}}</td>
+                                    <td>{{item.date}}</td>
+                                    <td><a target="_blank" href="http://testnet.stellarchain.io/tx/{{item.transaction_hash}}">{{item.transaction_hash | slice:0:11}}...</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

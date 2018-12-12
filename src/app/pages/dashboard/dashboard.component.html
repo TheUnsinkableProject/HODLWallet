@@ -1,0 +1,44 @@
+<div>
+  <div class="page-wrapper">
+    <app-side-bar></app-side-bar>
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+      <app-content-header></app-content-header>
+      <!-- MAIN CONTENT-->
+      <div class="main-content">
+
+        <div class="section__content section__content--p30">
+          <div class="container-fluid">
+            <div class="row">
+
+              <div class="col-lg-12">
+                <div class="alert-danger custom-alert" *ngIf="user.refund_xlm">
+                  Please follow the link to return 2 XLM credit to Unsinkable
+                  <a class="text-primary clickable" (click)="goToPay()">Pay Off</a>
+                </div>
+                <div class="au-card recent-report">
+                    <h4 class="text-primary">Your Wallet Account ID:</h4>
+                    <p>{{account_id}}</p>
+                      <br>
+                  
+                  <h4 class="text-primary">Balances:</h4><br>
+                  <div class="au-card-inner" *ngIf="user.refund_xlm">
+                    <h4 class="text-primary">Balance: {{balance?.XLM}} XLM</h4><br>
+                    <h4 class="text-primary">Credit Balance: 2 XLM</h4>
+                  </div>
+
+                  <div class="au-card-inner" *ngIf="!user.refund_xlm">
+                    <h4 class="text-primary">{{balance?.XLM}} XLM</h4><br>
+                    <h4 class="text-primary">{{balance?.UNSK ? balance?.UNSK : 0}} UNSK</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END MAIN CONTENT-->
+      <!-- END PAGE CONTAINER-->
+    </div>
+  </div>
+</div>

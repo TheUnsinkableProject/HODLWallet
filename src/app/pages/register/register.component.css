@@ -1,0 +1,16 @@
+.page-content--bge5 {
+    overflow-y: auto;
+}
+.login-wrap{
+    padding-top: 6vh;
+    margin: 0 auto 15px;
+}
+
+span.text-red{
+    color: #ff2e44;
+}
+.txt{
+    font-size: 12px;
+    line-height: 1;
+    text-align: justify
+}

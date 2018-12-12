@@ -1,0 +1,96 @@
+<div>
+    <div class="page-wrapper">
+        <app-side-bar></app-side-bar>
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <app-content-header></app-content-header>
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="alert-danger custom-alert" *ngIf="user.refund_xlm">
+                                    Please follow the link to return 2 XLM credit to Unsinkable
+                                    <a class="text-primary clickable" (click)="goToPay()">Pay Off</a>
+                                </div>
+                                <div class="au-card recent-report">
+                                    <h4 class="title">Withdraw</h4><br>
+
+                                    <div [formGroup]="withForm">
+                                        <div class="form-group">
+                                            <label class="control-label">Send to*</label>
+                                            <div class="input-icon right">
+                                                <input placeholder="Recipient username or address" required
+                                                       formControlName="destination" type="text" name="destination"
+                                                       class="form-control">
+                                                <control-messages [errorApi]="errorMsgs" controlTxt="Destination"
+                                                                  controlName="destination"
+                                                                  [control]="withForm.controls.destination"></control-messages>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <label class="control-label">Amount*</label>
+                                                    <div class="input-icon right">
+                                                        <input placeholder="Enter amount" required
+                                                               formControlName="amount"
+                                                               type="text" name="amount"
+                                                               class="form-control">
+                                                        <div class="form-control-focus">2 XLM are reserved for Stellar minimum balance
+                                                        </div>
+                                                        <control-messages [errorApi]="errorMsgs" controlTxt="Amount"
+                                                                          controlName="amount"
+                                                                          [control]="withForm.controls.amount"></control-messages>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label class="control-label">Currency*</label>
+                                                    <div class="input-icon right">
+                                                        <select (change)="onBalanceChange($event)" class="form-control" formControlName="asset">
+                                                            <option value="XLM" selected> XLM</option>
+                                                            <option value="UNSK"> UNSK</option>
+                                                        </select>
+                                                        <div class="form-control-focus">Balance {{ currentBalance }}</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label">Memo Message</label>
+                                            <div class="input-icon right">
+                                                <input formControlName="memo" type="text" name="memo" maxlength="28"
+                                                       class="form-control">
+                                                <control-messages [errorApi]="errorMsgs" controlTxt="Memo"
+                                                                  controlName="memo"
+                                                                  [control]="withForm.controls.memo"></control-messages>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-actions mx-auto">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <button (click)="confirmWithdraw()" type="submit"
+                                                            [disabled]="user.refund_xlm"
+                                                            class="btn btn-success">
+                                                        Send
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<block-ui></block-ui>
